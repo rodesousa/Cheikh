@@ -21,7 +21,7 @@ class User(Pattern):
 
    def print(self,value_check):
       resp = self.returns(value_check)
-      return ("user %s: %s") %(self.attributs['name'],resp)
+      return ("user %s: %s \n") %(self.attributs['name'],resp)
 
    def returns(self,value_check):
       return self.attributs['returns'] == value_check

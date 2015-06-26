@@ -2,6 +2,4 @@
 user:
    name: 'rds'
 users:
-   - user:
-      name: 'root'
-   - syslog
+   name: 'root,root,root'

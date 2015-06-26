@@ -12,4 +12,9 @@ def pattern_matching(data_yaml):
       if key == 'user':
          user = User(data_yaml[key])
          list_pattern.append(user)
+      if key == 'users':
+         if 'name' in data_yaml[key]:
+            for i in data_yaml[key]['name'].split(','):
+               list_pattern.append(User({'name':i}))
    return list_pattern
+
