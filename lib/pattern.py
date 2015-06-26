@@ -10,3 +10,6 @@ class Pattern:
 
 	def check(self,name_user):
 		return False
+
+	def attr_return(return_value):
+		return self.attributs['return'] == return_value
