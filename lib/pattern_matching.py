@@ -3,8 +3,8 @@
 #
 #Code provisoire. Chercher des fonctions de pattern matching où la dvp
 #
-from user import User
 
+from user import User
 
 def pattern_matching(data_yaml):
    list_pattern = []

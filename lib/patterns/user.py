@@ -11,17 +11,22 @@ class User(Pattern):
       if condition ==  True:
          for key in name_user:
             self.attributs[key]= name_user[key]
-         self.attributs['returns']= 0
+         self.attributs['returns']= True
 
    def do(self):
-      return ['id',self.attributs['name']]
+      return 'id %s' %self.attributs['name']
+#      return ['id',self.attributs['name']]
 
    def check(self,name_user):
       return 'name' in name_user
 
-   def print(self,value_check):
-      resp = self.returns(value_check)
+   def print(self,stdout,stderr):
+      resp = self.returns(stdout,stderr)
       return ("user %s: %s \n") %(self.attributs['name'],resp)
 
-   def returns(self,value_check):
-      return self.attributs['returns'] == value_check
+   def returns(self,stdout,stderr):
+      if self.attributs['returns']:
+         return not stderr.readlines()
+      else:
+         return False
+        #NOT IMPLEM
