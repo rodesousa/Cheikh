@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 from pattern import Pattern
 from attribut import Attribut
@@ -24,7 +24,7 @@ class Curl(Pattern):
    def check(self,name_user):
       return 'url' in name_user
 
-   def print(self,value_check):
+   def printe(self,value_check):
       resp = self.returns(value_check)
       return ("curl %s: %s \n") %(self.attributs['url'],resp)
 
