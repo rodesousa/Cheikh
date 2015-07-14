@@ -1,6 +1,9 @@
 #!/usr/bin/python
 
-import sys, yaml, os, argparse
+import sys
+import os
+
+import yaml
 
 sys.path.append('lib')
 sys.path.append('lib/patterns')
@@ -21,47 +24,47 @@ args = check_args().parse_args()
 
 # yaml file
 if not os.path.isfile(args.yamlFile):
-  print'yamlFile not found or Invalid file path'
-  sys.exit(1)
+    print'yamlFile not found or Invalid file path'
+    sys.exit(1)
 # verbose
-isVerbose= args.verbose
+isVerbose = args.verbose
 
 # engine type
+# only one engine is possible
 if args.ssh and args.local:
-  print 'Please choose ssh or local mode'
-  sys.exit(1)
+    print 'Please choose ssh or local mode'
+    sys.exit(1)
 
-if args.ssh: 
-   engine = 'ssh'
-   if not os.path.isfile(args.ssh):
-      print'ssh config yamlFile not found pr Invalid file path'
-      sys.exit(1)
-   else :
-      sshYamlFile=args.ssh
+if args.ssh:
+    engine = 'ssh'
+    if not os.path.isfile(args.ssh):
+        print'ssh config yamlFile not found pr Invalid file path'
+        sys.exit(1)
+    else:
+        sshYamlFile = args.ssh
 elif args.local:
-   engine = 'localhost'
-
+    engine = 'localhost'
 else:
-  engine= 'localhost'
+    engine = 'localhost'
 
 ###################################
 # Lanch cheikh
 ####################################
-print 'Lanching cheikh in {0} engine mode'.format(engine) 
-#print'sshYamlFile {}'.format(sshYamlFile)
+print 'Lanching cheikh in {0} engine mode'.format(engine)
+# print'sshYamlFile {}'.format(sshYamlFile)
 
-#READ YAMl
-stream = open(args.yamlFile,'r')
+# READ YAMl
+stream = open(args.yamlFile, 'r')
 data_yaml = yaml.load(stream)
 
-#PATTERN_MATCHING
-patterns = pattern_matching(data_yaml)   
+# PATTERN_MATCHING
+patterns = pattern_matching(data_yaml)
 
-#ENGINE
+# ENGINE
 if engine == 'localhost':
-  print engine_localhost(patterns,isVerbose)
-  
+    print engine_localhost(patterns, isVerbose)
+
 elif engine == 'ssh':
-  stream_config= open('config.yaml')
-  config = yaml.load(stream_config)
-  print engine_ssh(patterns,config,isVerbose)
+    stream_config = open('config.yaml')
+    config = yaml.load(stream_config)
+    print engine_ssh(patterns, config, isVerbose)

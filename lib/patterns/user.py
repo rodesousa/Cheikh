@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from pattern import Pattern
-from attribut import Attribut
+
 
 class User(Pattern):
 
@@ -20,7 +20,7 @@ class User(Pattern):
    def check(self,name_user):
       return 'name' in name_user
 
-   def print(self,stdout,stderr):
+   def printe(self,stdout,stderr):
       resp = self.returns(stdout,stderr)
       return ("user %s: %s \n") %(self.attributs['name'],resp)
 
