@@ -1,39 +1,23 @@
 #!/usr/bin/python
 
-import pattern
+from pattern import *
 
 
-class PUser(pattern.Pattern):
+class PUser(Pattern):
+    Pattern.ATTRIBUTS.extend(['name', 'uid', 'gid'])
+    Pattern.NAME = 'User'
+
     def __init__(self, name_user):
-        self.attributs = {}
-        condition = self.check(name_user)
-        if condition == True:
-            self.check = True
-            self.stderr = ''
-            for key in name_user:
-                self.attributs[key] = name_user[key]
-            self.attributs['returns'] = True
+        super(PUser, self).__init__(name_user)
 
+    # On retourne (String) toutes les potentielles commande shell possible avec le pattern. 
     def do(self):
-        return 'id %s' % self.attributs['name']
+        if 'name' in self.attributs:
+            return 'id %s' % self.attributs['name']
+        return 'id %s' % self.attributs['uid']
 
+    # Dans l'argument name_user, on regarde si il y a au moins 1 commande possible.
     def check(self, name_user):
-        return 'name' in name_user
-
-    def __str__(self):
-        if self.check:
-            return "User %s: True" % self.attributs['name']
-        else:
-            return self.printError()
-
-    def printError(self):
-        return "ERROR user %s: %s" % (self.attributs['name'], self.stderr)
-
-    def returns(self, stdout, stderr):
-        if self.attributs['returns']:
-            error = stderr.readlines()
-            if error:
-                self.check = False
-                self.stderr = error
-        else:
-            print 'NOT IMPLEM'
+        if 'uid' in name_user or 'name' in name_user:
+            return True
+        return False
