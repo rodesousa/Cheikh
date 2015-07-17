@@ -24,8 +24,12 @@ def engine_localhost(patterns, isVerbose):
             cptTrue += 1
         else:
             cptFalse += 1
-        if isVerbose or pattern.check == False:
-            strPattern += "%s \n" % pattern
+        if isVerbose and pattern.check == False:
+            strPattern += genere_color_trace(printer.FAIL, "%s \n" % pattern)
+        elif isVerbose and pattern.check == True:
+            strPattern += genere_color_trace(printer.OKBLUE, "%s \n" % pattern)
+        elif pattern.check == False:
+            strPattern += genere_color_trace(printer.FAIL, "%s \n" % pattern)
     return genere_trace_localhost(cptTrue, cptFalse, len(patterns), isVerbose, strPattern)
 
 

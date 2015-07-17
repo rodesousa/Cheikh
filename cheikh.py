@@ -12,6 +12,7 @@ from datetime import datetime
 from engine import *
 from pattern_matching import *
 from argumentParser import *
+from printer import *
 
 ######################################
 # Command Lie parser
@@ -52,7 +53,8 @@ else:
 # Lanch cheikh
 ####################################
 start = datetime.now()
-print '[{0}] - Lanching cheikh'.format(start.strftime('%Y-%m-%d %H:%M:%S'))
+print genere_color_trace(printer.HEADER, '[{0}] - Lanching cheikh'.format(start.strftime('%Y-%m-%d %H:%M:%S')))
+# print '[{0}] - Lanching cheikh'.format(start.strftime('%Y-%m-%d %H:%M:%S'))
 # print 'Lanching cheikh in {0} engine mode'.format(engine)
 # print'sshYamlFile {}'.format(sshYamlFile)
 
@@ -75,4 +77,5 @@ elif engine == 'ssh':
 end = datetime.now()
 delta = end - start
 
-print '[{0}] - End cheikh in {1} '.format(end.strftime('%Y-%m-%d %H:%M:%S'), delta)
+# print '[{0}] - End cheikh in {1} '.format(end.strftime('%Y-%m-%d %H:%M:%S'), delta)
+print genere_color_trace(printer.HEADER, '[{0}] - End cheikh in {1} '.format(end.strftime('%Y-%m-%d %H:%M:%S'), delta))
