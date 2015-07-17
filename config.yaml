@@ -3,9 +3,9 @@
 server:
    cacaca:
       hostname: 'lxdv324a.unix-int.intra-int.bdf-int.local'
-      user: 'i2162eh'
-      password: 'Rdsba94*'
+      user: 'i2162**'
+      password: '********'
    b:
       hostname: 'lxdv324a.unix-int.intra-int.bdf-int.local'
-      user: 'i2162eh'
-      password: 'Rdsba94*'
+      user: 'i2162**'
+      password: '******'
