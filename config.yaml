@@ -2,10 +2,10 @@
 #hostname: rds-PR601-VR603
 server:
    cacaca:
-      hostname: 'lxdv324a.unix-int.intra-int.bdf-int.local'
-      user: 'i2162**'
-      password: '********'
+      hostname: '127.0.0.1'
+      user: 'rds'
+      password: 'gegene'
    b:
-      hostname: 'lxdv324a.unix-int.intra-int.bdf-int.local'
-      user: 'i2162**'
-      password: '******'
+      hostname: '127.0.0.1'
+      user: 'rds'
+      password: 'gegene'
