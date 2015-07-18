@@ -8,9 +8,11 @@ import yaml
 sys.path.append('lib')
 sys.path.append('lib/patterns')
 
+from datetime import datetime
 from engine import *
 from pattern_matching import *
 from argumentParser import *
+from printer import *
 
 ######################################
 # Command Lie parser
@@ -50,7 +52,10 @@ else:
 ###################################
 # Lanch cheikh
 ####################################
-print 'Lanching cheikh in {0} engine mode'.format(engine)
+start = datetime.now()
+print genere_color_trace(printer.HEADER, '[{0}] - Lanching cheikh'.format(start.strftime('%Y-%m-%d %H:%M:%S')))
+# print '[{0}] - Lanching cheikh'.format(start.strftime('%Y-%m-%d %H:%M:%S'))
+# print 'Lanching cheikh in {0} engine mode'.format(engine)
 # print'sshYamlFile {}'.format(sshYamlFile)
 
 # READ YAMl
@@ -68,3 +73,9 @@ elif engine == 'ssh':
     stream_config = open('config.yaml')
     config = yaml.load(stream_config)
     print engine_ssh(patterns, config, isVerbose)
+
+end = datetime.now()
+delta = end - start
+
+# print '[{0}] - End cheikh in {1} '.format(end.strftime('%Y-%m-%d %H:%M:%S'), delta)
+print genere_color_trace(printer.HEADER, '[{0}] - End cheikh in {1} '.format(end.strftime('%Y-%m-%d %H:%M:%S'), delta))
