@@ -14,18 +14,18 @@ class printer:
     WARNING = '\033[93m'
     ENDC = '\033[0m'
 
-def genere_trace_localhost(cptTrue, cptFalse, lenPatterns, isVerbose, strPattern):
-    return genere_trace(cptTrue, cptFalse, lenPatterns, 'localhost', isVerbose, strPattern)
+def genere_trace_localhost(cpt_true, cpt_false, len_patterns, is_verbose, str_pattern):
+    return genere_trace(cpt_true, cpt_false, len_patterns, 'localhost', is_verbose, str_pattern)
 
 
-def genere_trace(cptTrue, cptFalse, lenPatterns, host, isVerbose, strPattern):
+def genere_trace(cpt_true, cpt_false, len_patterns, host, is_verbose, str_pattern):
     tmp = genere_color_trace(printer.UNDERLINE, "\n---%s---\n" % host)
-    tmp += genere_color_trace(printer.OKGREEN, "Good= %s/%s\n" % (cptTrue, lenPatterns))
-    if cptFalse != 0:
-        tmp += genere_color_trace(printer.FAIL, "Fail= %s/%s\n" % (cptFalse, lenPatterns))
-    if isVerbose or cptFalse != 0:
+    tmp += genere_color_trace(printer.OKGREEN, "Good= %s/%s\n" % (cpt_true, len_patterns))
+    if cpt_false != 0:
+        tmp += genere_color_trace(printer.FAIL, "Fail= %s/%s\n" % (cpt_false, len_patterns))
+    if is_verbose or cpt_false != 0:
         tmp += genere_color_trace(printer.BOLD, "###Detail###\n")
-    return tmp + strPattern
+    return tmp + str_pattern
 
 
 def genere_color_trace(color, message):

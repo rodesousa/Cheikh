@@ -6,7 +6,7 @@ import argparse
 def check_args():
     parser = argparse.ArgumentParser(description='script to check environment status')
 
-    parser.add_argument('yamlFile', help="yaml file containing environment checks")
+    parser.add_argument('yaml_file', help="yaml file containing environment checks")
 
     parser.add_argument('-v', '--verbose',
                         action="store_true",

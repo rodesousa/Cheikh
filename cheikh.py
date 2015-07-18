@@ -25,11 +25,11 @@ args = check_args().parse_args()
 ####################################
 
 # yaml file
-if not os.path.isfile(args.yamlFile):
-    print'yamlFile not found or Invalid file path'
+if not os.path.isfile(args.yaml_file):
+    print'yaml_file not found or Invalid file path'
     sys.exit(1)
 # verbose
-isVerbose = args.verbose
+is_verbose = args.verbose
 
 # engine type
 # only one engine is possible
@@ -40,10 +40,10 @@ if args.ssh and args.local:
 if args.ssh:
     engine = 'ssh'
     if not os.path.isfile(args.ssh):
-        print'ssh config yamlFile not found pr Invalid file path'
+        print'ssh config yaml_file not found pr Invalid file path'
         sys.exit(1)
     else:
-        sshYamlFile = args.ssh
+        ssh_yaml_file = args.ssh
 elif args.local:
     engine = 'localhost'
 else:
@@ -56,10 +56,10 @@ start = datetime.now()
 print genere_color_trace(printer.HEADER, '[{0}] - Lanching cheikh'.format(start.strftime('%Y-%m-%d %H:%M:%S')))
 # print '[{0}] - Lanching cheikh'.format(start.strftime('%Y-%m-%d %H:%M:%S'))
 # print 'Lanching cheikh in {0} engine mode'.format(engine)
-# print'sshYamlFile {}'.format(sshYamlFile)
+# print'ssh_yaml_file {}'.format(ssh_yaml_file)
 
 # READ YAMl
-stream = open(args.yamlFile, 'r')
+stream = open(args.yaml_file, 'r')
 data_yaml = yaml.load(stream)
 
 # PATTERN_MATCHING
@@ -67,12 +67,12 @@ patterns = pattern_matching(data_yaml)
 
 # ENGINE
 if engine == 'localhost':
-    print engine_localhost(patterns, isVerbose)
+    print engine_localhost(patterns, is_verbose)
 
 elif engine == 'ssh':
     stream_config = open('config.yaml')
     config = yaml.load(stream_config)
-    print engine_ssh(patterns, config, isVerbose)
+    print engine_ssh(patterns, config, is_verbose)
 
 end = datetime.now()
 delta = end - start
