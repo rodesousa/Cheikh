@@ -5,19 +5,20 @@ from pattern import *
 
 class PUser(Pattern):
     Pattern.ATTRIBUTS.extend(['name', 'uid', 'gid'])
-    Pattern.NAME = 'User'
 
-    def __init__(self, name_user):
-        super(PUser, self).__init__(name_user)
+    def __init__(self, arguments_attribut):
+        super(PUser, self).__init__('User', arguments_attribut)
 
-    # On retourne (String) toutes les potentielles commande shell possible avec le pattern. 
+        if self.check:
+            if 'uid' in self.attributs:
+                self.check_tag['uid'] = r"uid=(?P<tag>[\d]+)"
+            if 'gid' in self.attributs:
+                self.check_tag['gid'] = r"gid=(?P<tag>[\d]+)"
+
     def do(self):
-        if 'name' in self.attributs:
-            return 'id %s' % self.attributs['name']
-        return 'id %s' % self.attributs['uid']
+        return ['id %s' % self.attributs['name']]
 
-    # Dans l'argument name_user, on regarde si il y a au moins 1 commande possible.
-    def check(self, name_user):
-        if 'uid' in name_user or 'name' in name_user:
+    def check_arg(self, arguments_attribut):
+        if 'name' in arguments_attribut:
             return True
         return False

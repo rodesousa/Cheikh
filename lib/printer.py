@@ -14,6 +14,7 @@ class printer:
     WARNING = '\033[93m'
     ENDC = '\033[0m'
 
+
 def genere_trace_localhost(cpt_true, cpt_false, len_patterns, is_verbose, str_pattern):
     return genere_trace(cpt_true, cpt_false, len_patterns, 'localhost', is_verbose, str_pattern)
 

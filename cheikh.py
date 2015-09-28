@@ -61,16 +61,22 @@ print genere_color_trace(printer.HEADER, '[{0}] - Lanching cheikh'.format(start.
 # READ YAMl
 stream = open(args.yaml_file, 'r')
 data_yaml = yaml.load(stream)
-
 # PATTERN_MATCHING
 patterns = pattern_matching(data_yaml)
 
+try:
+    stream_config = open('config.yaml')
+    config = yaml.load(stream_config)
+except:
+    print 'Pas de fichier config.yaml'
+    sys.exit(1)
+
 # ENGINE
 if engine == 'localhost':
-    print engine_localhost(patterns, is_verbose)
+    print engine_localhost(patterns, config, is_verbose)
 
 elif engine == 'ssh':
-    stream_config = open('config.yaml')
+    stream_config = open(ssh_yaml_file)
     config = yaml.load(stream_config)
     print engine_ssh(patterns, config, is_verbose)
 

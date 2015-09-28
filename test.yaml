@@ -1,7 +1,0 @@
----
-user:
-   name: 'root'
-   returns: 'uid=1'
-
-users:
-   name: 'root,root,root'

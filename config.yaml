@@ -1,11 +1,15 @@
 ---
-#hostname: rds-PR601-VR603
+localhost:
+   user: 'root'
+   password: ''
+   hostname: '127.0.0.1'
+
 server:
-   cacaca:
+   a:
       hostname: '127.0.0.1'
-      user: 'rds'
-      password: 'gegene'
-   b:
-      hostname: '127.0.0.1'
-      user: 'rds'
-      password: 'gegene'
+      user: 'root'
+      password: ''
+#   b:
+ #     hostname: '127.0.0.1'
+  #    user: 'rds'
+   #   password: 'gegene'
