@@ -3,7 +3,7 @@
 import argparse
 
 
-#Toutes les options de cheikh
+# Toutes les options de cheikh
 def check_args():
     parser = argparse.ArgumentParser(description='script to check environment status')
 
