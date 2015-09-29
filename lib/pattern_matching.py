@@ -21,4 +21,3 @@ def pattern_matching(data_yaml):
         else:
             list_pattern.append(class_pattern(pattern[1]))
     return list_pattern
-

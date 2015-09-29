@@ -1,0 +1,16 @@
+---
+
+- diff:
+    name_1: ~/.profile
+    name_2: ~/.bashrc
+    expected: false
+
+- diff:
+    name_1: ~/.profile
+    name_2: ~/.profile
+
+- diff:
+    name_1: ~/.profile
+    name_2: ~/.profilee
+    expected: false
+

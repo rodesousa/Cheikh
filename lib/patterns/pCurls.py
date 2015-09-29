@@ -2,7 +2,7 @@
 
 from pListe import *
 
-class PCurls(PListe):
 
+class PCurls(PListe):
     def __init__(self, arguments_attribut):
         super(PCurls, self).__init__(arguments_attribut, 'Curl')
