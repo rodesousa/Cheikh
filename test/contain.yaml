@@ -1,0 +1,21 @@
+---
+
+- contain:
+     name: ~/.profile
+     exp: "HOME"
+
+- contain:
+     name: ~/WTF
+     exp: "WTF"
+     expected: false
+
+- contain:
+     name: ~/.profile
+     exp: "WTF"
+     expected: false
+
+- contains:
+     name: 
+           - ~/.profile
+           - ~/.profile
+     exp: "HOME"

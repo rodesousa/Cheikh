@@ -58,14 +58,16 @@ class Pattern(object):
     def returns(self, returns):
         stdout_print = map(lambda (x,y): str(x.readlines()), returns)
         stderr_print = map(lambda (x,y): y.readlines(), returns)
-        value = False
         if self.returns_clasic(stderr_print):
             if self.returns_without_tag(stdout_print):
-                if self.returns_with_tag(stdout_print):
-                    value = True
-        if self.expected != value:
+                self.returns_with_tag(stdout_print)
+    #    if self.check and self.expected == False:
+        if self.check and not self.expected:
             self.check = False
-            self.stderr = "The test is %s but the expected value is %s" %(value, self.expected)
+            self.stderr = "The test is %s but the expected value is %s" %(self.check, self.expected)
+        # on force le self.check a true quand on attend un resultat faux
+        elif not self.check and not self.expected:
+            self.check = True
         return self.check
 
     def returns_with_tag(self, stdout_print):
@@ -75,7 +77,7 @@ class Pattern(object):
                 if not re.search(m[0].group('tag'), self.attributs[key]):
                     self.check = False
                     self.stderr = "Isn't a good %s : %s != %s " % ( \
-                        key, m[0].group('tag'), self.attributs[key])
+                            key, m[0].group('tag'), self.attributs[key])
         return self.check
        
     def returns_without_tag(self, stdout_print):

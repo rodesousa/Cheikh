@@ -1,0 +1,8 @@
+---
+- ping:
+     name: "localhost"
+     expected: false
+
+- pings:
+     name: 
+        - 'localhost'
